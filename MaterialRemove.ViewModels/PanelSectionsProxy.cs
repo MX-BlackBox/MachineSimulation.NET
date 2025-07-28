@@ -182,7 +182,7 @@ namespace MaterialRemove.ViewModels
                                     DispatcherHelper.CheckBeginInvokeOnUi(() =>
                                     {
                                         foreach (var item in section.GetSubSections()) Sections.Add(item);
-                                        DispatcherHelper.CheckBeginInvokeOnUi(() => Sections.Remove(section));
+                                        Sections.Remove(section);
                                     });
                                 }
                             }
