@@ -137,25 +137,27 @@ namespace MaterialRemove.ViewModels.Extensions
 
         public static List<IPanelSection> CreateSections(IRemovalParameters removalParameters, ISectionPositionProvider sectonPositionProvider, SectionDivision sectionDivision, SectionSize size, Position corner, double panelCenterZ)
         {
-            var list = new List<IPanelSection>();
+            var sizeX = sectionDivision.X;
+            var sizeY = sectionDivision.Y;
+            var sizeA = sizeX * sizeY;
+            var a = new IPanelSection[sizeA];
 
-            for (int i = 0; i < sectionDivision.X; i++)
+            Parallel.For(0, sizeA, (index) =>
             {
+                var i = index / sizeX;
+                var j = index % sizeX;
+
                 var centerX = corner.X + size.X / 2.0 + size.X * i;
+                var centerY = corner.Y + size.Y / 2.0 + size.Y * j;
+                var position = sectonPositionProvider.GetSectionPosition(sectionDivision.X, sectionDivision.Y, i, j);
+                var center = new Position() { X = centerX, Y = centerY };
 
-                for (int j = 0; j < sectionDivision.Y; j++)
-                {
-                    var centerY = corner.Y + size.Y / 2.0 + size.Y * j;
-                    var position = sectonPositionProvider.GetSectionPosition(sectionDivision.X, sectionDivision.Y, i, j);
-                    var center = new Position() { X = centerX, Y = centerY };
+                PanelSectionViewModel section = CreateSection(removalParameters, position, size, center, panelCenterZ);
 
-                    PanelSectionViewModel section = CreateSection(removalParameters, position, size, center, panelCenterZ);
+                a[index] = section;
+            });
 
-                    list.Add(section);
-                }
-            }
-
-            return list;
+            return a.ToList();
         }
 
         private static PanelSectionViewModel CreateLazySection(IRemovalParameters removalParameters, SectionPosition position, SectionDivision sectionDivision, SectionSize size, Position center, double panelCenterZ)

@@ -178,12 +178,12 @@ namespace MaterialRemove.ViewModels
                             {
                                 if (lazySection.TryTake(out var section))
                                 {
+
                                     DispatcherHelper.CheckBeginInvokeOnUi(() =>
                                     {
-                                        foreach (var item in section.GetSubSections()) Sections.Add(item);                                        
+                                        foreach (var item in section.GetSubSections()) Sections.Add(item);
+                                        DispatcherHelper.CheckBeginInvokeOnUi(() => Sections.Remove(section));
                                     });
-                                    Task.Delay(1);
-                                    DispatcherHelper.CheckBeginInvokeOnUi(() => Sections.Remove(section));
                                 }
                             }
                         });
