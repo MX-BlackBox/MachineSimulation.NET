@@ -58,31 +58,28 @@ namespace Machine._3D.Views.Helpers
                 var positions = new List<ToolPosition>();
                 var matrix1 = _panel.GetChainTransformation();
                 var tasks = new List<Task<ToolPosition>>();
+                var bag = new ConcurrentBag<ToolPosition>();
 
                 matrix1.Invert();
 
-                foreach (var tool in _tools)
+                await Parallel.ForEachAsync(_tools, (tool, token) =>
                 {
-                    tasks.Add(Task.Run(() =>
+                    GetToolPositionAndDirection(tool, matrix1, out Point3D tp, out Vector3D d2);
+                    var position = new ToolPosition()
                     {
-                        GetToolPositionAndDirection(tool, matrix1, out Point3D tp, out Vector3D d2);
+                        Point = new MDB.Point() { X = tp.X, Y = tp.Y, Z = tp.Z },
+                        Direction = new MDB.Vector() { X = d2.X, Y = d2.Y, Z = d2.Z },
+                        Radius = tool.WorkRadius,
+                        Length = tool.UsefulLength
+                    };
 
-                        return new ToolPosition()
-                        {
-                            Point = new MDB.Point() { X = tp.X, Y = tp.Y, Z = tp.Z },
-                            Direction = new MDB.Vector() { X = d2.X, Y = d2.Y, Z = d2.Z },
-                            Radius = tool.WorkRadius,
-                            Length = tool.UsefulLength
-                        };
-                    }));
-                }
+                    bag.Add(position);
 
-                return await Task.WhenAll(tasks).ContinueWith((t) =>
-                {
-                    return t.Result as IList<ToolPosition>;
+                    return new ValueTask();
                 });
 
-                //return Task.WhenAll(tasks).ContinueWith((t) => t.Result as IEnumerable<ToolPosition>);
+                return bag.ToList() as IList<ToolPosition>;
+
             });
         }
 
@@ -108,16 +105,11 @@ namespace Machine._3D.Views.Helpers
 
                 matrix1.Invert();
 
-                foreach (var tool in _tools)
+                await Parallel.ForEachAsync(_tools, async (tool, token) =>
                 {
-                    tasks.Add(Task.Run(async () =>
-                    {
-                        GetToolPositionAndDirection(tool, matrix1, out Point3D tp, out Vector3D d2);
-                        await ApplayToolAsync(tool, tp, d2);
-                    }));
-                }
-
-                await Task.WhenAll(tasks);
+                    GetToolPositionAndDirection(tool, matrix1, out Point3D tp, out Vector3D d2);
+                    await ApplayToolAsync(tool, tp, d2);
+                });
 
                 return 0;
             });
