@@ -35,6 +35,8 @@ namespace MaterialRemove.ViewModels
         private IPanelSection _thresholdToExplode;
         public IPanelSection ThresholdToExplode => _thresholdToExplode ?? (_thresholdToExplode = CreateThresholdToExplode());
 
+        public bool IsExploded { get; private set; }
+
         public LazyPanelSectionViewModel() : base()
         {
         }
@@ -65,6 +67,10 @@ namespace MaterialRemove.ViewModels
             return sections;
         }
 
-        public SectionPosition GetSectionPosition(int nxSection, int nySection, int i, int j) => LazySectionExtension.GetSectionPosition(SectionPosition, nxSection, nySection, i, j);
+        public SectionPosition GetSectionPosition(int nxSection, int nySection, int i, int j)
+        {
+            IsExploded = true;
+            return LazySectionExtension.GetSectionPosition(SectionPosition, nxSection, nySection, i, j);
+        }
     }
 }

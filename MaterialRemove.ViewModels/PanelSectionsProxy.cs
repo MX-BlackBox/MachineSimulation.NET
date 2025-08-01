@@ -145,48 +145,77 @@ namespace MaterialRemove.ViewModels
         private Task ApplyActionAsync<T>(T toolApplication) where T : g3.BoundedImplicitFunction3d, IIntersector, IIndexed
         {
             var tasks = new List<Task>();
-            var lazySection = new ConcurrentBag<ILazyPanelSection>();
+            var lazySection = new ConcurrentQueue<ILazyPanelSection>();
+            var createdSections = new ConcurrentQueue<IPanelSection>();
 
             foreach (var section in Sections)
             {
                 tasks.Add(Task.Run(async () =>
                 {
-                    if (section is ILazyPanelSection lps)
+                    if ((section is ILazyPanelSection lps) && !lps.IsExploded)
                     {
-                        if (await Task.Run(() => toolApplication.Intersect(lps.ThresholdToExplode)))
+                        if (toolApplication.Intersect(lps.ThresholdToExplode))
                         {
-                            lazySection.Add(lps);
+                            lazySection.Enqueue(lps);
+                            var subSections = lps.GetSubSections();
+                            var tt = new Task[subSections.Count];
+
+                            for (int i = 0; i < subSections.Count; i++)
+                            {
+                                tt[i] = Task.Run(async () =>
+                                {
+                                    if (toolApplication.Intersect(subSections[i]))
+                                    {
+                                        await ApplyActionToSectionAsync(subSections[i], toolApplication);
+                                    }
+                                });
+
+                                createdSections.Enqueue(subSections[i]);
+                            }
+
+                            await Task.WhenAll(tt);
                         }
                     }
-                    else if (await Task.Run(() => toolApplication.Intersect(section)))
+                    else if (toolApplication.Intersect(section))
                     {
-                        var tt = new Task[]
-                        {
-                            ApplyActionToFacesAsync(section, toolApplication),
-                            ApplyActionToVolumeAsync(section, toolApplication)
-                        };
-
-                        await Task.WhenAll(tt);
+                        await ApplyActionToSectionAsync(section, toolApplication);
                     }
                 }));
             }
 
             return Task.WhenAll(tasks)
-                        .ContinueWith(t =>
+                        .ContinueWith(async t =>
                         {
-                            while (!lazySection.IsEmpty)
+                            DispatcherHelper.CheckBeginInvokeOnUi(() =>
                             {
-                                if (lazySection.TryTake(out var section))
+                                while (createdSections.TryDequeue(out var section))
                                 {
-
-                                    DispatcherHelper.CheckBeginInvokeOnUi(() =>
-                                    {
-                                        foreach (var item in section.GetSubSections()) Sections.Add(item);
-                                        Sections.Remove(section);
-                                    });
+                                    Sections.Add(section);
                                 }
-                            }
+                            });
+
+                            await Task.Delay(50); // Allow UI to update
+
+                            DispatcherHelper.CheckBeginInvokeOnUi(() =>
+                            {
+                                while (lazySection.TryDequeue(out var section))
+                                {
+                                    Sections.Remove(section);
+                                }
+                            });
+
                         });
+        }
+
+        private Task ApplyActionToSectionAsync<T>(IPanelSection section, T toolApplication) where T : g3.BoundedImplicitFunction3d, IIntersector, IIndexed
+        {
+            var tt = new Task[]
+            {
+                ApplyActionToFacesAsync(section, toolApplication),
+                ApplyActionToVolumeAsync(section, toolApplication)
+            };
+
+            return Task.WhenAll(tt);
         }
 
         private Task ApplyActionToFacesAsync<T>(IPanelSection section, T toolApplication) where T : g3.BoundedImplicitFunction3d, IIntersector
@@ -197,7 +226,7 @@ namespace MaterialRemove.ViewModels
             {
                 tasks.Add(Task.Run(async () =>
                 {
-                    if (await Task.Run(() => toolApplication.Intersect(face)))
+                    if (toolApplication.Intersect(face))
                     {
                         if (face is SectionElementViewModel sevm)
                         {
