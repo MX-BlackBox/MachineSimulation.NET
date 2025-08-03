@@ -5,11 +5,14 @@ using MaterialRemove.ViewModels.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace MaterialRemove.ViewModels
 {
     internal class LazyPanelSectionViewModel : PanelSectionViewModel, ILazyPanelSection, ISectionPositionProvider
     {
+        private static IList<IPanelSection> _emptyList = new List<IPanelSection>();
+
         class ThresholdPanelSection : IPanelSection
         {
             public int Id => throw new NotImplementedException();
@@ -35,7 +38,8 @@ namespace MaterialRemove.ViewModels
         private IPanelSection _thresholdToExplode;
         public IPanelSection ThresholdToExplode => _thresholdToExplode ?? (_thresholdToExplode = CreateThresholdToExplode());
 
-        public bool IsExploded { get; private set; }
+        private int _isExploded;
+        public bool IsExploded => _isExploded > 0;
 
         public LazyPanelSectionViewModel() : base()
         {
@@ -53,24 +57,27 @@ namespace MaterialRemove.ViewModels
 
         public IList<IPanelSection> GetSubSections()
         {
-            var division = new PanelExtensions.SectionDivision() { X = SectionsCountX, Y = SectionsCountY };
-            var size = new PanelExtensions.SectionSize() { X = SizeX / SectionsCountX, Y = SizeY / SectionsCountY, Z = SizeZ };
-            var center = new PanelExtensions.Position() { X = CenterX - SizeX / 2.0, Y = CenterY - SizeY / 2.0 };
+            if (Interlocked.CompareExchange(ref _isExploded, 1, 0) == 0)
+            {
+                var division = new PanelExtensions.SectionDivision() { X = SectionsCountX, Y = SectionsCountY };
+                var size = new PanelExtensions.SectionSize() { X = SizeX / SectionsCountX, Y = SizeY / SectionsCountY, Z = SizeZ };
+                var center = new PanelExtensions.Position() { X = CenterX - SizeX / 2.0, Y = CenterY - SizeY / 2.0 };
 
-            var sections = PanelExtensions.CreateSections(RemovalParameters,
-                                                          this,
-                                                          division,
-                                                          size,
-                                                          center,
-                                                          CenterZ);
+                var sections = PanelExtensions.CreateSections(RemovalParameters,
+                                                              this,
+                                                              division,
+                                                              size,
+                                                              center,
+                                                              CenterZ);
 
-            return sections;
+                return sections;
+            }
+            else
+            {
+                return _emptyList;
+            }
         }
 
-        public SectionPosition GetSectionPosition(int nxSection, int nySection, int i, int j)
-        {
-            IsExploded = true;
-            return LazySectionExtension.GetSectionPosition(SectionPosition, nxSection, nySection, i, j);
-        }
+        public SectionPosition GetSectionPosition(int nxSection, int nySection, int i, int j) => LazySectionExtension.GetSectionPosition(SectionPosition, nxSection, nySection, i, j);
     }
 }

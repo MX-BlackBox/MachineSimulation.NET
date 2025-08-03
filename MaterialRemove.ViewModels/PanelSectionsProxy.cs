@@ -154,7 +154,7 @@ namespace MaterialRemove.ViewModels
                 {
                     if ((section is ILazyPanelSection lps) && !lps.IsExploded)
                     {
-                        if (toolApplication.Intersect(lps.ThresholdToExplode))
+                        if (toolApplication.Intersect(lps.ThresholdToExplode) && !lps.IsExploded)
                         {
                             lazySection.Enqueue(lps);
                             var subSections = lps.GetSubSections();
