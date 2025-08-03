@@ -145,10 +145,11 @@ namespace MaterialRemove.ViewModels
         private Task ApplyActionAsync<T>(T toolApplication) where T : g3.BoundedImplicitFunction3d, IIntersector, IIndexed
         {
             var tasks = new List<Task>();
-            var lazySection = new ConcurrentQueue<ILazyPanelSection>();
-            var createdSections = new ConcurrentQueue<IPanelSection>();
+            var lazySection = new ConcurrentBag<ILazyPanelSection>();
+            var createdSections = new ConcurrentBag<IPanelSection>();
+            var localSections = Sections.ToList();
 
-            foreach (var section in Sections)
+            foreach (var section in localSections)
             {
                 tasks.Add(Task.Run(async () =>
                 {
@@ -156,7 +157,7 @@ namespace MaterialRemove.ViewModels
                     {
                         if (toolApplication.Intersect(lps.ThresholdToExplode) && !lps.IsExploded)
                         {
-                            lazySection.Enqueue(lps);
+                            lazySection.Add(lps);
                             var subSections = lps.GetSubSections();
                             var tt = new Task[subSections.Count];
 
@@ -170,7 +171,7 @@ namespace MaterialRemove.ViewModels
                                     }
                                 });
 
-                                createdSections.Enqueue(subSections[i]);
+                                createdSections.Add(subSections[i]);
                             }
 
                             await Task.WhenAll(tt);
@@ -188,17 +189,17 @@ namespace MaterialRemove.ViewModels
                         {
                             DispatcherHelper.CheckBeginInvokeOnUi(() =>
                             {
-                                while (createdSections.TryDequeue(out var section))
+                                while (createdSections.TryTake(out var section))
                                 {
                                     Sections.Add(section);
                                 }
                             });
 
-                            await Task.Delay(50); // Allow UI to update
+                            await Task.Delay(25); // Allow UI to update
 
                             DispatcherHelper.CheckBeginInvokeOnUi(() =>
                             {
-                                while (lazySection.TryDequeue(out var section))
+                                while (lazySection.TryTake(out var section))
                                 {
                                     Sections.Remove(section);
                                 }
