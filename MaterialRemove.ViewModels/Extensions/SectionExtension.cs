@@ -13,109 +13,103 @@ namespace MaterialRemove.ViewModels.Extensions
 {
     static class SectionExtension
     {
-        static IRemovalParameters _removalParameters;
-
         public static IList<ISectionFace> CreateFaces(this IPanelSection section, SectionPosition position, IRemovalParameters removalParameters)
         {
             var list = new List<ISectionFace>();
 
-            _removalParameters = removalParameters;
-
             switch (position)
             {
                 case SectionPosition.Center:
-                    list.AddFaceUpDown(section, position);
+                    list.AddFaceUpDown(section, position, removalParameters);
                     break;
 
                 case SectionPosition.SideTop:
-                    list.AddFaceUpDown(section, position);
-                    list.AddFaceTop(section, position);
+                    list.AddFaceUpDown(section, position, removalParameters);
+                    list.AddFaceTop(section, position, removalParameters);
                     break;
 
                 case SectionPosition.SideRigth:
-                    list.AddFaceUpDown(section, position);
-                    list.AddFaceRight(section, position);
+                    list.AddFaceUpDown(section, position, removalParameters);
+                    list.AddFaceRight(section, position, removalParameters);
                     break;
 
                 case SectionPosition.SideBottom:
-                    list.AddFaceUpDown(section, position);
-                    list.AddFaceBottom(section, position);
+                    list.AddFaceUpDown(section, position, removalParameters);
+                    list.AddFaceBottom(section, position, removalParameters);
                     break;
 
                 case SectionPosition.SideLeft:
-                    list.AddFaceUpDown(section, position);
-                    list.AddFaceLeft(section, position);
+                    list.AddFaceUpDown(section, position, removalParameters);
+                    list.AddFaceLeft(section, position, removalParameters);
                     break;
 
                 case SectionPosition.CornerTopRight:
-                    list.AddFaceUpDown(section, position);
-                    list.AddFaceTop(section, position);
-                    list.AddFaceRight(section, position);
+                    list.AddFaceUpDown(section, position, removalParameters);
+                    list.AddFaceTop(section, position, removalParameters);
+                    list.AddFaceRight(section, position, removalParameters);
                     break;
 
                 case SectionPosition.CornerTopLeft:
-                    list.AddFaceUpDown(section, position);
-                    list.AddFaceTop(section, position);
-                    list.AddFaceLeft(section, position);
+                    list.AddFaceUpDown(section, position, removalParameters);
+                    list.AddFaceTop(section, position, removalParameters);
+                    list.AddFaceLeft(section, position, removalParameters);
                     break;
 
                 case SectionPosition.CornerBottomLeft:
-                    list.AddFaceUpDown(section, position);
-                    list.AddFaceBottom(section, position);
-                    list.AddFaceLeft(section, position);
+                    list.AddFaceUpDown(section, position, removalParameters);
+                    list.AddFaceBottom(section, position, removalParameters);
+                    list.AddFaceLeft(section, position, removalParameters);
                     break;
 
                 case SectionPosition.CornerBottomRight:
-                    list.AddFaceUpDown(section, position);
-                    list.AddFaceRight(section, position);
-                    list.AddFaceBottom(section, position);
+                    list.AddFaceUpDown(section, position, removalParameters);
+                    list.AddFaceRight(section, position, removalParameters);
+                    list.AddFaceBottom(section, position, removalParameters);
                     break;
 
                 case SectionPosition.EndBottom:
-                    list.AddFaceUpDown(section, position);
-                    list.AddFaceBottom(section, position);
-                    list.AddFaceLeft(section, position);
-                    list.AddFaceRight(section, position);
+                    list.AddFaceUpDown(section, position, removalParameters);
+                    list.AddFaceBottom(section, position, removalParameters);
+                    list.AddFaceLeft(section, position, removalParameters);
+                    list.AddFaceRight(section, position, removalParameters);
                     break;
 
                 case SectionPosition.EndLeft:
-                    list.AddFaceUpDown(section, position);
-                    list.AddFaceBottom(section, position);
-                    list.AddFaceLeft(section, position);
-                    list.AddFaceTop(section, position);
+                    list.AddFaceUpDown(section, position, removalParameters);
+                    list.AddFaceBottom(section, position, removalParameters);
+                    list.AddFaceLeft(section, position, removalParameters);
+                    list.AddFaceTop(section, position, removalParameters);
                     break;
 
                 case SectionPosition.EndRight:
-                    list.AddFaceUpDown(section, position);
-                    list.AddFaceBottom(section, position);
-                    list.AddFaceTop(section, position);
-                    list.AddFaceRight(section, position);
+                    list.AddFaceUpDown(section, position, removalParameters);
+                    list.AddFaceBottom(section, position, removalParameters);
+                    list.AddFaceTop(section, position, removalParameters);
+                    list.AddFaceRight(section, position, removalParameters);
                     break;
 
                 case SectionPosition.EndTop:
-                    list.AddFaceUpDown(section, position);
-                    list.AddFaceTop(section, position);
-                    list.AddFaceLeft(section, position);
-                    list.AddFaceRight(section, position);
+                    list.AddFaceUpDown(section, position, removalParameters);
+                    list.AddFaceTop(section, position, removalParameters);
+                    list.AddFaceLeft(section, position, removalParameters);
+                    list.AddFaceRight(section, position, removalParameters);
                     break;
 
                 case SectionPosition.CenterAlongX:
-                    list.AddFaceUpDown(section, position);
-                    list.AddFaceBottom(section, position);
-                    list.AddFaceTop(section, position);
+                    list.AddFaceUpDown(section, position, removalParameters);
+                    list.AddFaceBottom(section, position, removalParameters);
+                    list.AddFaceTop(section, position, removalParameters);
                     break;
 
                 case SectionPosition.CenterAlongY:
-                    list.AddFaceUpDown(section, position);
-                    list.AddFaceLeft(section, position);
-                    list.AddFaceRight(section, position);
+                    list.AddFaceUpDown(section, position, removalParameters);
+                    list.AddFaceLeft(section, position, removalParameters);
+                    list.AddFaceRight(section, position, removalParameters);
                     break;
 
                 default:
                     throw new ArgumentException();
             }
-
-            _removalParameters = null;
 
             return list;
         }
@@ -123,7 +117,7 @@ namespace MaterialRemove.ViewModels.Extensions
         internal static AxisAlignedBox3d GetBound(this IPanelSection section) => new AxisAlignedBox3d(new Vector3d(section.CenterX, section.CenterY, section.CenterZ), section.SizeX / 2.0, section.SizeY / 2.0, section.SizeZ / 2.0);
 
 
-        private static ISectionFace CreateFace(double centerX, double centerY, double centerZ, double sizeX, double sizeY, Orientation orientation)
+        private static ISectionFace CreateFace(double centerX, double centerY, double centerZ, double sizeX, double sizeY, Orientation orientation, IRemovalParameters removalParameters)
         {
             var vm = MVMIoc.SimpleIoc<IElementViewModelFactory>.GetInstance().CreateSectionFaceViewModel();
 
@@ -133,31 +127,31 @@ namespace MaterialRemove.ViewModels.Extensions
             vm.SizeX = sizeX;
             vm.SizeY = sizeY;
             vm.Orientation = orientation;
-            vm.RemovalParameters = _removalParameters;
+            vm.RemovalParameters = removalParameters;
 
             return vm;
         }
 
-        private static void AddFaceUpDown(this IList<ISectionFace> list, IPanelSection section, SectionPosition position)
+        private static void AddFaceUpDown(this IList<ISectionFace> list, IPanelSection section, SectionPosition position, IRemovalParameters removalParameters)
         {
-            list.Add(CreateFace(section.CenterX, section.CenterY, section.GetCenterZFaceUp(), section.SizeX, section.SizeY, Orientation.ZPos));
-            list.Add(CreateFace(section.CenterX, section.CenterY, section.GetCenterZFaceDown(), section.SizeX, section.SizeY, Orientation.ZNeg));
+            list.Add(CreateFace(section.CenterX, section.CenterY, section.GetCenterZFaceUp(), section.SizeX, section.SizeY, Orientation.ZPos, removalParameters));
+            list.Add(CreateFace(section.CenterX, section.CenterY, section.GetCenterZFaceDown(), section.SizeX, section.SizeY, Orientation.ZNeg, removalParameters));
         }
-        private static void AddFaceTop(this IList<ISectionFace> list, IPanelSection section, SectionPosition position)
+        private static void AddFaceTop(this IList<ISectionFace> list, IPanelSection section, SectionPosition position, IRemovalParameters removalParameters)
         {
-            list.Add(CreateFace(section.CenterX, section.GetCenterYFaceTop(), section.CenterZ, section.SizeX, section.SizeZ, Orientation.YPos));
+            list.Add(CreateFace(section.CenterX, section.GetCenterYFaceTop(), section.CenterZ, section.SizeX, section.SizeZ, Orientation.YPos, removalParameters));
         }
-        private static void AddFaceBottom(this IList<ISectionFace> list, IPanelSection section, SectionPosition position)
+        private static void AddFaceBottom(this IList<ISectionFace> list, IPanelSection section, SectionPosition position, IRemovalParameters removalParameters)
         {
-            list.Add(CreateFace(section.CenterX, section.GetCenterYFaceBottom(), section.CenterZ, section.SizeX, section.SizeZ, Orientation.YNeg));
+            list.Add(CreateFace(section.CenterX, section.GetCenterYFaceBottom(), section.CenterZ, section.SizeX, section.SizeZ, Orientation.YNeg, removalParameters));
         }
-        private static void AddFaceRight(this IList<ISectionFace> list, IPanelSection section, SectionPosition position)
+        private static void AddFaceRight(this IList<ISectionFace> list, IPanelSection section, SectionPosition position, IRemovalParameters removalParameters)
         {
-            list.Add(CreateFace(section.GetCenterXFaceRigth(), section.CenterY, section.CenterZ, section.SizeY, section.SizeZ, Orientation.XPos));
+            list.Add(CreateFace(section.GetCenterXFaceRigth(), section.CenterY, section.CenterZ, section.SizeY, section.SizeZ, Orientation.XPos, removalParameters));
         }
-        private static void AddFaceLeft(this IList<ISectionFace> list, IPanelSection section, SectionPosition position)
+        private static void AddFaceLeft(this IList<ISectionFace> list, IPanelSection section, SectionPosition position, IRemovalParameters removalParameters)
         {
-            list.Add(CreateFace(section.GetCenterXFaceLeft(), section.CenterY, section.CenterZ, section.SizeY, section.SizeZ, Orientation.XNeg));
+            list.Add(CreateFace(section.GetCenterXFaceLeft(), section.CenterY, section.CenterZ, section.SizeY, section.SizeZ, Orientation.XNeg, removalParameters));
         }
         private static double GetCenterXFaceRigth(this IPanelSection section) => section.CenterX + section.SizeX / 2.0;
         private static double GetCenterXFaceLeft(this IPanelSection section) => section.CenterX - section.SizeX / 2.0;
