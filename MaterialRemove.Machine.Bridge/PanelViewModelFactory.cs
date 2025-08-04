@@ -25,7 +25,7 @@ namespace MaterialRemove.Machine.Bridge
                 SizeY = sizeY,
                 SizeZ = sizeZ,
                 NumCells = 16,
-                SectionsX100mm = 3,
+                SectionsX100mm = Convert(materialRemoveData.SectionsX100mm),
                 FilterMargin = 0.1,
                 PanelFragment = materialRemoveData.PanelFragment,
                 SectionDivision = Convert(materialRemoveData.SectionDivision),
@@ -34,6 +34,33 @@ namespace MaterialRemove.Machine.Bridge
             panel.Initialize();
 
             return panel;
+        }
+
+        private int Convert(SectionsPer100mm value)
+        {
+            switch (value)
+            {
+                case SectionsPer100mm.Per_3:
+                    return 3;
+                case SectionsPer100mm.Per_4:
+                    return 4;
+                case SectionsPer100mm.Per_5:
+                    return 5;
+                case SectionsPer100mm.Per_6:
+                    return 6;
+                case SectionsPer100mm.Per_8:
+                    return 8;
+                case SectionsPer100mm.Per_10:
+                    return 10;
+                case SectionsPer100mm.Per_12:
+                    return 12;
+                case SectionsPer100mm.Per_15:
+                    return 15;
+                case SectionsPer100mm.Per_20:
+                    return 20;
+                default:
+                    throw new ArgumentOutOfRangeException($"Value {value} not managed!");
+            }
         }
 
         private static int Convert(SectionDivision value)

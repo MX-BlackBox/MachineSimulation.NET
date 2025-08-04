@@ -17,6 +17,7 @@ namespace MaterialRemove.ViewModels.Extensions
             c.RootModeSteps = 5;                                        // number of iterations
             c.Bounds = filterBox;//_sideFilterBox;
             c.CubeSize = cubeSize; // _cubeSize / 4.0;
+            //c.ParallelCompute = false;
             c.Generate();
             MeshNormals.QuickCompute(c.Mesh);                           // generate normals
 

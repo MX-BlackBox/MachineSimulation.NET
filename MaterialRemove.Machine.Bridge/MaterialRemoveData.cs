@@ -10,7 +10,7 @@ namespace MaterialRemove.Machine.Bridge
     {
         public bool Enable { get; set; }
         public int MinNumCells { get; set; } = 16;
-        public int SectionsX100mm { get; set; } = 3;
+        public SectionsPer100mm SectionsX100mm { get; set; }
         public PanelFragment PanelFragment { get; set; }
         public SectionDivision SectionDivision { get; set; }
     }

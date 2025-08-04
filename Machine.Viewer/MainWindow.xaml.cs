@@ -74,6 +74,7 @@ namespace Machine.Viewer
             Properties.Settings.Default.SectionDivision = vm.MaterialRemoveData.SectionDivision.ToString();
             Properties.Settings.Default.InnerPanelWireframe = vm.PanelWireframe.Inner;
             Properties.Settings.Default.OuterPanelWireframe = vm.PanelWireframe.Outer;
+            Properties.Settings.Default.SectionsX100mm = vm.MaterialRemoveData.SectionsX100mm.ToString();
         }
 
         private void UpdateFromSettings()
@@ -100,6 +101,7 @@ namespace Machine.Viewer
             vm.SectionDivisionOptions.TryToParse(Properties.Settings.Default.SectionDivision);
             vm.PanelWireframe.Outer = Properties.Settings.Default.OuterPanelWireframe;
             vm.PanelWireframe.Inner = Properties.Settings.Default.InnerPanelWireframe;
+            vm.SectionsPer100mmOptions.TryToParse(Properties.Settings.Default.SectionsX100mm);
         }
     }
 }

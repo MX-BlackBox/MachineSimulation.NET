@@ -24,6 +24,7 @@ namespace Machine.Viewer
         public MRI.IMaterialRemoveData MaterialRemoveData => ViewModels.Ioc.SimpleIoc<MRI.IMaterialRemoveData>.GetInstance();
         public VMUI.IOptionProvider<MRIE.PanelFragment> PanelFragmentOptions => ViewModels.Ioc.SimpleIoc<VMUI.IOptionProvider<MRIE.PanelFragment>>.GetInstance();
         public VMUI.IOptionProvider<MRIE.SectionDivision> SectionDivisionOptions => ViewModels.Ioc.SimpleIoc<VMUI.IOptionProvider<MRIE.SectionDivision>>.GetInstance();
+        public VMUI.IOptionProvider<MRIE.SectionsPer100mm> SectionsPer100mmOptions => ViewModels.Ioc.SimpleIoc<VMUI.IOptionProvider<MRIE.SectionsPer100mm>>.GetInstance();
         public VMUI.IProbesController ProbesController => ViewModels.Ioc.SimpleIoc<VMUI.IProbesController>.GetInstance();
         public VMUI.IOptionProvider<M3DVE.ProbeSize> ProbeSize => ViewModels.Ioc.SimpleIoc<VMUI.IOptionProvider<M3DVE.ProbeSize>>.GetInstance();
         public VMUI.IOptionProvider<M3DVE.ProbeColor> ProbeColor => ViewModels.Ioc.SimpleIoc<VMUI.IOptionProvider<M3DVE.ProbeColor>>.GetInstance();
@@ -43,6 +44,10 @@ namespace Machine.Viewer
             MVMIoc.SimpleIoc<VMUI.IOptionProvider<MRIE.SectionDivision>>
                 .Register(new VMUI.EnumOptionProxy<MRIE.SectionDivision>(() => MaterialRemoveData.SectionDivision,
                                                                     (v) => MaterialRemoveData.SectionDivision = v));
+
+            MVMIoc.SimpleIoc<VMUI.IOptionProvider<MRIE.SectionsPer100mm>>
+                .Register(new VMUI.EnumOptionProxy<MRIE.SectionsPer100mm>(() => MaterialRemoveData.SectionsX100mm,
+                                                                    (v) => MaterialRemoveData.SectionsX100mm = v));
         }
     }
 }

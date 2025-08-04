@@ -9,7 +9,7 @@ namespace MaterialRemove.Interfaces
     {
         bool Enable { get; set; }
         int MinNumCells { get; set; }
-        int SectionsX100mm { get; set; }
+        SectionsPer100mm SectionsX100mm { get; set; }
         PanelFragment PanelFragment { get; set; }
         SectionDivision SectionDivision{ get; set; }
     }

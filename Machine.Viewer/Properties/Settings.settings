@@ -126,5 +126,8 @@
     <Setting Name="OuterPanelWireframe" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="SectionsX100mm" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Per_3</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
