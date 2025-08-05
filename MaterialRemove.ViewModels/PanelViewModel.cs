@@ -23,7 +23,7 @@ namespace MaterialRemove.ViewModels
         public double SizeY { get; set; }
         public double SizeZ { get; set; }
 
-        public IList<IPanelSection> Sections => (_panelSectionsProxy != null) ? _panelSectionsProxy.Sections : null;
+        public ICollection<IPanelSection> Sections => (_panelSectionsProxy != null) ? _panelSectionsProxy.Sections : null;
 
         public void Initialize()
         {

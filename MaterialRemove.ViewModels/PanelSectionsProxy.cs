@@ -15,7 +15,7 @@ namespace MaterialRemove.ViewModels
     {
         protected IProgressState _stateProgressState;
 
-        public IList<IPanelSection> Sections { get; set; }
+        public ICollection<IPanelSection> Sections { get; set; }
 
         public IDispatcherHelper DispatcherHelper { get; set; }
 
@@ -187,24 +187,19 @@ namespace MaterialRemove.ViewModels
             return Task.WhenAll(tasks)
                         .ContinueWith(async t =>
                         {
+                            var coll = Sections as IPanelSectionObservableCollection;
+
                             DispatcherHelper.CheckBeginInvokeOnUi(() =>
                             {
-                                while (createdSections.TryTake(out var section))
-                                {
-                                    Sections.Add(section);
-                                }
+                                coll.Add(createdSections.ToArray().ToList());
                             });
 
                             await Task.Delay(25); // Allow UI to update
 
                             DispatcherHelper.CheckBeginInvokeOnUi(() =>
                             {
-                                while (lazySection.TryTake(out var section))
-                                {
-                                    Sections.Remove(section);
-                                }
+                                coll.Remove(lazySection.ToArray().ToList<IPanelSection>());
                             });
-
                         });
         }
 

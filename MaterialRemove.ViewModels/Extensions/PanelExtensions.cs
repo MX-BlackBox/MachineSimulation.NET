@@ -45,7 +45,7 @@ namespace MaterialRemove.ViewModels.Extensions
             _sectonPositionProvider= new SectionPositionProvider();
         }
 
-        public static IList<IPanelSection> CreateSections(this IPanel panel)
+        public static ICollection<IPanelSection> CreateSections(this IPanel panel)
         {
             InitializeSectionsNumber(panel, out int nxSection, out int nySection);
 
@@ -82,7 +82,7 @@ namespace MaterialRemove.ViewModels.Extensions
             }
         }
 
-        private static IList<IPanelSection> CreateLazySections(IPanel panel, SectionDivision sectionDivision, SectionSize size, Position corner, double panelCenterZ)
+        private static ICollection<IPanelSection> CreateLazySections(IPanel panel, SectionDivision sectionDivision, SectionSize size, Position corner, double panelCenterZ)
         {
             var nSideDiv = panel.SectionDivision;
             var nx = sectionDivision.X / nSideDiv;
@@ -91,7 +91,7 @@ namespace MaterialRemove.ViewModels.Extensions
             var modY = sectionDivision.Y % nSideDiv;
             var cntX = (modX > 0) ? (nx + 1) : nx;
             var cntY = (modY > 0) ? (ny + 1) : ny;
-            var list = new ObservableCollection<IPanelSection>();
+            var list = new PanelSectionObservableCollection();
             var sideDiv = new SectionDivision() { X = nSideDiv, Y = nSideDiv };
 
             for (int i = 0; i < cntX; i++)

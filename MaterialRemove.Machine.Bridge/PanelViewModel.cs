@@ -32,7 +32,7 @@ namespace MaterialRemove.Machine.Bridge
         public PanelFragment PanelFragment { get; set; }
         public int SectionDivision { get; set; }
 
-        public IList<IPanelSection> Sections => (_panelSectionsProxy != null) ? _panelSectionsProxy.Sections : null;
+        public ICollection<IPanelSection> Sections => (_panelSectionsProxy != null) ? _panelSectionsProxy.Sections : null;
         public IEnumerable<ISectionFace> Faces => (_panelSectionsProxy != null) ? Sections.SelectMany(s => s.Faces) : null;
         public IEnumerable<ISectionVolume> Volumes => ((_panelSectionsProxy != null) && (_panelSectionsProxy.Sections.Any(s => s.Volume != null))) ? Sections.Select(s => s.Volume) : null;
 

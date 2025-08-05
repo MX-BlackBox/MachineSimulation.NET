@@ -11,7 +11,7 @@ namespace MaterialRemove.Interfaces
         double SizeX { get; set; }
         double SizeY { get; set; }
         double SizeZ { get; set; }
-        IList<IPanelSection> Sections { get; }
+        ICollection<IPanelSection> Sections { get; }
 
         void Initialize();
         void ApplyAction(ToolActionData toolActionData);
