@@ -40,21 +40,14 @@ namespace MaterialRemove.ViewModels
             {
                 var parDist = (d < 0.0) ? (-d) : (d - Length);
 
-                if (orthoDist > 0.0)
-                {
-                    return Math.Sqrt(Math.Pow(parDist, 2) + Math.Pow(orthoDist, 2));
-                }
-                else
-                {
-                    return parDist;
-                }
+                return (orthoDist > 0.0) 
+                    ? Math.Sqrt(parDist * parDist + orthoDist * orthoDist) 
+                    : parDist;
             }
             else
             {
                 return orthoDist;
             }
-
-            throw new NotImplementedException();
         }
         #endregion
 

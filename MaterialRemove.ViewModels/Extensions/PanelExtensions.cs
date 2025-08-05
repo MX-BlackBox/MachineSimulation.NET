@@ -1,5 +1,4 @@
-﻿using g3;
-using MaterialRemove.Interfaces;
+﻿using MaterialRemove.Interfaces;
 using MaterialRemove.ViewModels.Enums;
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,6 @@ using MVMIoc = Machine.ViewModels.Ioc;
 using MRVMI = MaterialRemove.ViewModels.Interfaces;
 using System.Collections.ObjectModel;
 using MaterialRemove.ViewModels.Interfaces;
-using static System.Collections.Specialized.BitVector32;
 
 namespace MaterialRemove.ViewModels.Extensions
 {
