@@ -1,9 +1,8 @@
-﻿using g3;
-using Machine.ViewModels.Interfaces;
+﻿using Machine.ViewModels.Interfaces;
+using MaterialRemove.Geometry.Implicit;
 using MaterialRemove.ViewModels.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MaterialRemove.ViewModels.ToolApplications
 {
@@ -17,17 +16,17 @@ namespace MaterialRemove.ViewModels.ToolApplications
             _collList = new List<ToolApplications>();
         }
 
-        public static ToolAppProxy Add<T>(ref T item) where T : g3.BoundedImplicitFunction3d, IIndexed, IIntersector
+        public static ToolAppProxy Add<T>(ref T item) where T : BoundedImplicitFunction3d, IIndexed, IIntersector
         {
             return ToolApplications<T>.Instance.Add(ref item);
         }
 
-        public static g3.BoundedImplicitFunction3d GetAt(int index1, int index2) => _collList[index1].GetAt(index2);
+        public static BoundedImplicitFunction3d GetAt(int index1, int index2) => _collList[index1].GetAt(index2);
 
-        protected abstract g3.BoundedImplicitFunction3d GetAt(int index);
+        protected abstract BoundedImplicitFunction3d GetAt(int index);
     }
 
-    class ToolApplications<T> : ToolApplications where T : g3.BoundedImplicitFunction3d, IIndexed, IIntersector
+    class ToolApplications<T> : ToolApplications where T : BoundedImplicitFunction3d, IIndexed, IIntersector
     {
         private int _collIdx = -1;
         private List<T> _items = new List<T>();

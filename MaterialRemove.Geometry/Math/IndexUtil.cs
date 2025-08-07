@@ -1,7 +1,9 @@
-﻿using System;
+﻿using MaterialRemove.Geometry.Core;
+using MaterialRemove.Geometry.Mesh;
+using System;
 using System.Collections.Generic;
 
-namespace g3
+namespace MaterialRemove.Geometry.math
 {
     public class IndexUtil
     {

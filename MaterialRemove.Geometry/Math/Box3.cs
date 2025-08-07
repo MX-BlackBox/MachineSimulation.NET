@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace g3 {
+namespace MaterialRemove.Geometry.math
+{
 
 	// partially based on WildMagic5 Box3
 	public struct Box3d

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace g3
+namespace MaterialRemove.Geometry.Core
 {
     /// <summary>
     /// SmallListSet stores a set of short integer-valued variable-size lists.
@@ -147,7 +147,7 @@ namespace g3
             int N = block_store[block_ptr];
 
 
-            int iEnd = block_ptr + Math.Min(N, BLOCKSIZE);
+            int iEnd = block_ptr + System.Math.Min(N, BLOCKSIZE);
             for ( int i = block_ptr+1; i <= iEnd; ++i ) {
 
                 if ( block_store[i] == val ) {

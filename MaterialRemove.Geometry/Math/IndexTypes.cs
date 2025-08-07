@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace g3
+namespace MaterialRemove.Geometry.math
 {
 
     public struct Index3i : IComparable<Index3i>, IEquatable<Index3i>

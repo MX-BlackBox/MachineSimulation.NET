@@ -1,9 +1,7 @@
-﻿using g3;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MaterialRemove.Geometry.Implicit;
+using MaterialRemove.Geometry.math;
+using MaterialRemove.Geometry.Mesh;
+using MaterialRemove.Geometry.MeshGenerator;
 
 namespace MaterialRemove.ViewModels.Extensions
 {

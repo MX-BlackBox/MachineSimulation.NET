@@ -1,14 +1,11 @@
-﻿using g3;
-using Machine.ViewModels.Interfaces;
-using MaterialRemove.Interfaces;
-using MaterialRemove.ViewModels.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Machine.ViewModels.Interfaces;
+using MaterialRemove.Geometry.Implicit;
+using MaterialRemove.Geometry.math;
+
 
 namespace MaterialRemove.ViewModels.ToolApplications
 {
-    struct ToolAppProxy : g3.BoundedImplicitFunction3d, IIndexed//, IIntersector
+    struct ToolAppProxy : BoundedImplicitFunction3d, IIndexed//, IIntersector
     {
         readonly int _coll;
         readonly int _collIdx;

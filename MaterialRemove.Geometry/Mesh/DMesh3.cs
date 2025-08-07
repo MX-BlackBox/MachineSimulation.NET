@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.ObjectModel;
+﻿using MaterialRemove.Geometry.Core;
+using MaterialRemove.Geometry.math;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace g3
+namespace MaterialRemove.Geometry.Mesh
 {
     public enum MeshResult
     {

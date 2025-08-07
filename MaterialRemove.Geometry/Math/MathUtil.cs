@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace g3
+namespace MaterialRemove.Geometry.math
 {
 
     public static class MathUtil

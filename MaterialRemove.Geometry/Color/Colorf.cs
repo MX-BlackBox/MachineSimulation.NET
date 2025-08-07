@@ -1,12 +1,9 @@
-﻿using System;
+﻿using MaterialRemove.Geometry.math;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-#if G3_USING_UNITY
-using UnityEngine;
-#endif
-
-namespace g3
+namespace MaterialRemove.Geometry.Color
 {
     public struct Colorf : IComparable<Colorf>, IEquatable<Colorf>
     {

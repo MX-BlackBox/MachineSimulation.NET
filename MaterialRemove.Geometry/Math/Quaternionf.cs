@@ -5,7 +5,7 @@ using UnityEngine;
 #endif
 
 
-namespace g3
+namespace MaterialRemove.Geometry.math
 {
     // mostly ported from WildMagic5 Wm5Quaternion, from geometrictools.com
     public struct Quaternionf : IComparable<Quaternionf>, IEquatable<Quaternionf>

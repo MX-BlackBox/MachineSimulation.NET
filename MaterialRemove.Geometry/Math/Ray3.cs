@@ -7,7 +7,7 @@ using System.Text;
 using UnityEngine;
 #endif
 
-namespace g3
+namespace MaterialRemove.Geometry.math
 {
     public struct Ray3d
     {

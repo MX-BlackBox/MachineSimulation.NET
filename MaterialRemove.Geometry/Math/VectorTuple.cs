@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace g3
+namespace MaterialRemove.Geometry.math
 {
     // These are convenience classes used in place of local stack arrays
     // (which C# does not support, but is common in C++ code)

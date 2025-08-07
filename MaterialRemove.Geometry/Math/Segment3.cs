@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using MaterialRemove.Geometry.Curve;
 
-namespace g3
+namespace MaterialRemove.Geometry.math
 {
 	public struct Segment3d : IParametricCurve3d
     {

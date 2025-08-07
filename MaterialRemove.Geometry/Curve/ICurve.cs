@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
+﻿using MaterialRemove.Geometry.math;
 
-namespace g3
+namespace MaterialRemove.Geometry.Curve
 {
 
 	public interface IParametricCurve3d
@@ -24,25 +20,6 @@ namespace g3
 
 		IParametricCurve3d Clone();		
 	}
-
-
-
-
-    public interface ISampledCurve3d
-    {
-        int VertexCount { get; }
-        int SegmentCount { get; }
-        bool Closed { get; }
-
-        Vector3d GetVertex(int i);
-        Segment3d GetSegment(int i);
-
-        IEnumerable<Vector3d> Vertices { get; }
-    }
-
-
-
-
 
 	public interface IParametricCurve2d
 	{
@@ -64,11 +41,5 @@ namespace g3
 
         IParametricCurve2d Clone();
 	}
-
-
-    public interface IMultiCurve2d
-    {
-        ReadOnlyCollection<IParametricCurve2d> Curves { get; }
-    }
 
 }

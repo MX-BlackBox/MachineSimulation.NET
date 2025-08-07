@@ -1,6 +1,6 @@
 using System;
 
-namespace g3
+namespace MaterialRemove.Geometry.math
 {
     public struct AxisAlignedBox3d : IComparable<AxisAlignedBox3d>, IEquatable<AxisAlignedBox3d>
     {

@@ -93,7 +93,7 @@ namespace MaterialRemove.ViewModels
             });
         }
 
-        private void ApplyAction<T>(T toolApplication) where T : g3.BoundedImplicitFunction3d, IIntersector, IIndexed
+        private void ApplyAction<T>(T toolApplication) where T : Geometry.Implicit.BoundedImplicitFunction3d, IIntersector, IIndexed
         {
             var lazySections = new List<ILazyPanelSection>();
  
@@ -142,7 +142,7 @@ namespace MaterialRemove.ViewModels
             }
         }
 
-        private Task ApplyActionAsync<T>(T toolApplication) where T : g3.BoundedImplicitFunction3d, IIntersector, IIndexed
+        private Task ApplyActionAsync<T>(T toolApplication) where T : Geometry.Implicit.BoundedImplicitFunction3d, IIntersector, IIndexed
         {
             var tasks = new List<Task>();
             var lazySection = new ConcurrentBag<ILazyPanelSection>();
@@ -203,7 +203,7 @@ namespace MaterialRemove.ViewModels
                         });
         }
 
-        private Task ApplyActionToSectionAsync<T>(IPanelSection section, T toolApplication) where T : g3.BoundedImplicitFunction3d, IIntersector, IIndexed
+        private Task ApplyActionToSectionAsync<T>(IPanelSection section, T toolApplication) where T : Geometry.Implicit.BoundedImplicitFunction3d, IIntersector, IIndexed
         {
             var tt = new Task[]
             {
@@ -214,7 +214,7 @@ namespace MaterialRemove.ViewModels
             return Task.WhenAll(tt);
         }
 
-        private Task ApplyActionToFacesAsync<T>(IPanelSection section, T toolApplication) where T : g3.BoundedImplicitFunction3d, IIntersector
+        private Task ApplyActionToFacesAsync<T>(IPanelSection section, T toolApplication) where T : Geometry.Implicit.BoundedImplicitFunction3d, IIntersector
         {
             var tasks = new List<Task<bool>>();
 
@@ -241,7 +241,7 @@ namespace MaterialRemove.ViewModels
             return Task.WhenAll(tasks);
         }
 
-        private Task ApplyActionToVolumeAsync<T>(IPanelSection section, T toolApplication) where T : g3.BoundedImplicitFunction3d/*, IIntersector*/, IIndexed
+        private Task ApplyActionToVolumeAsync<T>(IPanelSection section, T toolApplication) where T : Geometry.Implicit.BoundedImplicitFunction3d/*, IIntersector*/, IIndexed
         {
             return Task.Run(async () =>
             {

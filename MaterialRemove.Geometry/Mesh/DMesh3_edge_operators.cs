@@ -1,8 +1,11 @@
-﻿using System;
+﻿using MaterialRemove.Geometry.Color;
+using MaterialRemove.Geometry.Core;
+using MaterialRemove.Geometry.math;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace g3
+namespace MaterialRemove.Geometry.Mesh
 {
     public partial class DMesh3
     {

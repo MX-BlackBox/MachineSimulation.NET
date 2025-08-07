@@ -1,6 +1,7 @@
+using MaterialRemove.Geometry.Queries;
 using System;
 
-namespace g3
+namespace MaterialRemove.Geometry.math
 {
 	// interval [a,b] on Real line. 
 	//   TODO: should check that a <= b !!

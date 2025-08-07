@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Diagnostics;
-using g3;
 
-namespace g3
+namespace MaterialRemove.Geometry.math
 {
     public struct Frame3f
     {

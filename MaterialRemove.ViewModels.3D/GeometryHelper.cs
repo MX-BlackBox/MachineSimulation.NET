@@ -1,5 +1,5 @@
-﻿using g3;
-using HelixToolkit.Wpf.SharpDX;
+﻿using HelixToolkit.Wpf.SharpDX;
+using MaterialRemove.Geometry.Mesh;
 using System;
 using System.Collections.Generic;
 using System.Linq;

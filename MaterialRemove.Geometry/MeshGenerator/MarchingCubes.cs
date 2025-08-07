@@ -1,11 +1,14 @@
-﻿using System;
+﻿using MaterialRemove.Geometry.Core;
+using MaterialRemove.Geometry.Implicit;
+using MaterialRemove.Geometry.math;
+using MaterialRemove.Geometry.Mesh;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using g3;
 
-namespace g3
+namespace MaterialRemove.Geometry.MeshGenerator
 {
     /// <summary>
     /// Basic implementation of marching cubes mesh generation, which can be applied to

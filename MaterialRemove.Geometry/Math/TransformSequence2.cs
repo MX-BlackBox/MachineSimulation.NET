@@ -1,8 +1,9 @@
-﻿using System;
+﻿using MaterialRemove.Geometry.Core;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace g3
+namespace MaterialRemove.Geometry.math
 {
     public interface ITransform2
     {

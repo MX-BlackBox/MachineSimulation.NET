@@ -1,10 +1,5 @@
-﻿using g3;
+﻿using MaterialRemove.Geometry.math;
 using MaterialRemove.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MaterialRemove.ViewModels.Extensions
 {

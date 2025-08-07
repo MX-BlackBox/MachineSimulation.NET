@@ -1,10 +1,8 @@
-﻿using System;
+﻿using MaterialRemove.Geometry.math;
+using System;
 
-#if G3_USING_UNITY
-using UnityEngine;
-#endif
 
-namespace g3
+namespace MaterialRemove.Geometry.Color
 {
     public struct Colorb
     {

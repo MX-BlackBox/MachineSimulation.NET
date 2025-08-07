@@ -7,7 +7,7 @@ using System.Text;
 using UnityEngine;
 #endif
 
-namespace g3
+namespace MaterialRemove.Geometry.math
 {
     public struct Vector2f : IComparable<Vector2f>, IEquatable<Vector2f>
     {

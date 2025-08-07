@@ -1,5 +1,6 @@
-﻿using g3;
-using Machine.ViewModels.Interfaces;
+﻿using Machine.ViewModels.Interfaces;
+using MaterialRemove.Geometry.Implicit;
+using MaterialRemove.Geometry.math;
 using MaterialRemove.Interfaces;
 using MaterialRemove.ViewModels.Extensions;
 using MaterialRemove.ViewModels.Interfaces;

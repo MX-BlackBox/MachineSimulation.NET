@@ -1,7 +1,5 @@
-﻿using MaterialRemove.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MaterialRemove.Geometry.math;
+using MaterialRemove.Interfaces;
 
 namespace MaterialRemove.ViewModels.Extensions
 {
@@ -9,13 +7,13 @@ namespace MaterialRemove.ViewModels.Extensions
     {
         static internal ToolConeApplication ToApplication(this ToolConeActionData toolConeActionData, int index = -1)
         {
-            return new ToolConeApplication(new g3.Vector3f(toolConeActionData.X, toolConeActionData.Y, toolConeActionData.Z),
+            return new ToolConeApplication(new Vector3f(toolConeActionData.X, toolConeActionData.Y, toolConeActionData.Z),
                                           toolConeActionData.MinRadius,
                                           toolConeActionData.MaxRadius,
                                           toolConeActionData.Length,
                                           toolConeActionData.Orientation,
                                           index,
-                                          new g3.Vector3f(toolConeActionData.DX, toolConeActionData.DY, toolConeActionData.DZ));
+                                          new Vector3f(toolConeActionData.DX, toolConeActionData.DY, toolConeActionData.DZ));
         }
     }
 }

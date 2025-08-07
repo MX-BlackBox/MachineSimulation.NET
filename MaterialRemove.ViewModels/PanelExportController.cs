@@ -1,10 +1,8 @@
-﻿using g3;
-using Machine.ViewModels.Base;
+﻿using Machine.ViewModels.Base;
+using MaterialRemove.Geometry.Mesh;
 using MaterialRemove.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Input;
 
 namespace MaterialRemove.ViewModels

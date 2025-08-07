@@ -1,8 +1,6 @@
-﻿using g3;
+﻿using MaterialRemove.Geometry.math;
 using MaterialRemove.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MaterialRemove.ViewModels.Extensions
 {

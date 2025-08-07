@@ -1,10 +1,6 @@
 ﻿using System;
 
-#if G3_USING_UNITY
-using UnityEngine;
-#endif
-
-namespace g3
+namespace MaterialRemove.Geometry.math
 {
     public struct AxisAlignedBox3f : IComparable<AxisAlignedBox3f>, IEquatable<AxisAlignedBox3f>
     {
