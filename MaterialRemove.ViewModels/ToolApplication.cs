@@ -31,8 +31,8 @@ namespace MaterialRemove.ViewModels
 
         public double Value(ref Vector3d pt)
         {
-            var n = this.GetDirection() * -1.0;
-            var v = pt - Position;
+            var n = this.GetDirectionAndInvert();
+            var v = new Vector3d(pt.x - Position.x, pt.y - Position.y, pt.z - Position.z);
             var d = n.Dot(v);
             var orthoDist = Math.Sqrt(v.LengthSquared - d * d) - Radius;
 

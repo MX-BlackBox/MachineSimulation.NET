@@ -3,6 +3,7 @@ using MaterialRemove.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,6 +18,7 @@ namespace MaterialRemove.ViewModels.Extensions
         private static Vector3d _zpos = new Vector3d(0.0, 0.0, 1.0);
         private static Vector3d _zneg = new Vector3d(0.0, 0.0, -1.0);
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         static internal AxisAlignedBox3d GetBound(this ToolApplication toolApplication)
         {
             return ToolHelper.GetBound(toolApplication.Position,
@@ -26,6 +28,7 @@ namespace MaterialRemove.ViewModels.Extensions
                                         toolApplication.Direction);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         static internal Vector3d GetDirection(this ToolApplication toolApplication)
         {
             switch (toolApplication.Orientation)
@@ -41,5 +44,23 @@ namespace MaterialRemove.ViewModels.Extensions
                     throw new ArgumentOutOfRangeException();
             }
         }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        static internal Vector3d GetDirectionAndInvert(this ToolApplication toolApplication)
+        {
+            switch (toolApplication.Orientation)
+            {
+                case Orientation.XPos: return _xneg;
+                case Orientation.XNeg: return _xpos;
+                case Orientation.YPos: return _yneg;
+                case Orientation.YNeg: return _ypos;
+                case Orientation.ZPos: return _zneg;
+                case Orientation.ZNeg: return _zpos;
+                case Orientation.Any: return toolApplication.Direction * -1.0f;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
     }
 }

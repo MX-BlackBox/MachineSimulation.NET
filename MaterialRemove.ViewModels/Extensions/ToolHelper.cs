@@ -3,6 +3,7 @@ using MaterialRemove.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,6 +11,7 @@ namespace MaterialRemove.ViewModels.Extensions
 {
     static class ToolHelper
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         static internal AxisAlignedBox3d GetBound(Vector3f position, float radius, float length, Orientation orientation, Vector3f direction)
         {
             if (orientation == Orientation.Any) return GetBound(position, radius, length, direction);
