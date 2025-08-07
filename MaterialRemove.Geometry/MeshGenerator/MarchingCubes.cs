@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace MaterialRemove.Geometry.MeshGenerator
 {
@@ -139,7 +140,7 @@ namespace MaterialRemove.Geometry.MeshGenerator
         /// <summary>
         /// compute 3D corner-positions and field values for cell at index
         /// </summary>
-        void initialize_cell(GridCell cell, ref Vector3i idx)
+        void initialize_cell(GridCell cell, ref Vector3i idx, bool parallel = false)
         {
             // [RMS] don't just add CellSize to x0 because then we
             //   get different numerical values for same point at different cells,
@@ -161,27 +162,34 @@ namespace MaterialRemove.Geometry.MeshGenerator
             cell.p[6].x = x1; cell.p[6].y = y1; cell.p[6].z = z1;
             cell.p[7].x = x0; cell.p[7].y = y1; cell.p[7].z = z1;
 
-            for (int i = 0; i < 8; ++i)
-                cell.f[i] = Implicit.Value(ref cell.p[i]);
+            if(parallel)
+            {
+                Parallel.For(0, 8, i => cell.f[i] = Implicit.Value(ref cell.p[i]));
+            }
+            else
+            {
+                for (int i = 0; i < 8; ++i)
+                    cell.f[i] = Implicit.Value(ref cell.p[i]);
+            }            
         }
 
 
         // assume we just want to slide cell at xi-1 to cell at xi, while keeping
         // yi and zi constant. Then only x-coords change, and we have already 
         // computed half the values
-        void shift_cell_x(GridCell cell, int xi)
+        void shift_cell_x(GridCell cell, int xi, bool parallel = false)
         {
             double xPrev = cell.p[1].x;
             double x1 = Bounds.Min.x + CubeSize * (xi + 1);
 
-            cell.p[0].x = xPrev; 
-            cell.p[1].x = x1; 
-            cell.p[2].x = x1; 
-            cell.p[3].x = xPrev; 
+            cell.p[0].x = xPrev;
+            cell.p[1].x = x1;
+            cell.p[2].x = x1;
+            cell.p[3].x = xPrev;
 
-            cell.p[4].x = xPrev; 
-            cell.p[5].x = x1; 
-            cell.p[6].x = x1; 
+            cell.p[4].x = xPrev;
+            cell.p[5].x = x1;
+            cell.p[6].x = x1;
             cell.p[7].x = xPrev;
 
             cell.f[0] = cell.f[1];
@@ -189,12 +197,22 @@ namespace MaterialRemove.Geometry.MeshGenerator
             cell.f[4] = cell.f[5];
             cell.f[7] = cell.f[6];
 
-            cell.f[1] = Implicit.Value(ref cell.p[1]);
-            cell.f[2] = Implicit.Value(ref cell.p[2]);
-            cell.f[5] = Implicit.Value(ref cell.p[5]);
-            cell.f[6] = Implicit.Value(ref cell.p[6]);
+            if (parallel)
+            {
+                Parallel.Invoke(
+                    () => cell.f[1] = Implicit.Value(ref cell.p[1]),
+                    () => cell.f[2] = Implicit.Value(ref cell.p[2]),
+                    () => cell.f[5] = Implicit.Value(ref cell.p[5]),
+                    () => cell.f[6] = Implicit.Value(ref cell.p[6]));
+            }
+            else
+            {
+                cell.f[1] = Implicit.Value(ref cell.p[1]);
+                cell.f[2] = Implicit.Value(ref cell.p[2]);
+                cell.f[5] = Implicit.Value(ref cell.p[5]);
+                cell.f[6] = Implicit.Value(ref cell.p[6]);
+            }
         }
-
 
         bool bParallel = false;
         SpinLock hash_lock;
@@ -218,10 +236,10 @@ namespace MaterialRemove.Geometry.MeshGenerator
                         return;
                     // compute full cell at x=0, then slide along x row, which saves half of value computes
                     Vector3i idx = new Vector3i(0, yi, zi);
-                    initialize_cell(cell, ref idx);
+                    initialize_cell(cell, ref idx, true);
                     polygonize_cell(cell, vertlist);
                     for (int xi = 1; xi < CellDimensions.x; ++xi) {
-                        shift_cell_x(cell, xi);
+                        shift_cell_x(cell, xi, true);
                         polygonize_cell(cell, vertlist);
                     }
                 }

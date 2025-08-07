@@ -75,6 +75,7 @@ namespace Machine.Viewer
             Properties.Settings.Default.InnerPanelWireframe = vm.PanelWireframe.Inner;
             Properties.Settings.Default.OuterPanelWireframe = vm.PanelWireframe.Outer;
             Properties.Settings.Default.SectionsX100mm = vm.MaterialRemoveData.SectionsX100mm.ToString();
+            Properties.Settings.Default.ParallelComputing = vm.MaterialRemoveData.ParallelComputing;
         }
 
         private void UpdateFromSettings()
@@ -102,6 +103,7 @@ namespace Machine.Viewer
             vm.PanelWireframe.Outer = Properties.Settings.Default.OuterPanelWireframe;
             vm.PanelWireframe.Inner = Properties.Settings.Default.InnerPanelWireframe;
             vm.SectionsPer100mmOptions.TryToParse(Properties.Settings.Default.SectionsX100mm);
+            vm.MaterialRemoveData.ParallelComputing = Properties.Settings.Default.ParallelComputing;
         }
     }
 }

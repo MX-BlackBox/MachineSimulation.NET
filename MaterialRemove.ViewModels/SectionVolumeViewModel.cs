@@ -21,11 +21,11 @@ namespace MaterialRemove.ViewModels
 
         internal override DMesh3 GenerateMesh()
         {
-            var procFunction = new ImplicitNaryDifference3d() { A = this, BSet = ToolApplications };
-            var cubeSize = RemovalParameters.CubeSize;
-            var filterBox = GetDecreaseBound(RemovalParameters.FilterMargin);
-
-            return MeshProcessHelper.GenerateMeshBase(procFunction, filterBox, cubeSize);
+            return MeshProcessHelper.GenerateMeshBase(
+                new ImplicitNaryDifference3d() { A = this, BSet = ToolApplications },
+                GetDecreaseBound(RemovalParameters.FilterMargin),
+                RemovalParameters.CubeSize,
+                RemovalParameters.ParallelComputing);
         }
 
         private AxisAlignedBox3d GetExpandedBound(double radius)

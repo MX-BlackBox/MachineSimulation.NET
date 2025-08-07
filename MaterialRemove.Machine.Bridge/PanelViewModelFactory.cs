@@ -29,6 +29,7 @@ namespace MaterialRemove.Machine.Bridge
                 FilterMargin = 0.1,
                 PanelFragment = materialRemoveData.PanelFragment,
                 SectionDivision = Convert(materialRemoveData.SectionDivision),
+                ParallelComputing = materialRemoveData.ParallelComputing
             };
 
             panel.Initialize();

@@ -19,6 +19,7 @@ namespace MaterialRemove.ViewModels
         public double FilterMargin { get; set; }
         public PanelFragment PanelFragment { get; set; }
         public int SectionDivision { get; set; }
+        public bool ParallelComputing { get; set; }
         public double SizeX { get; set; }
         public double SizeY { get; set; }
         public double SizeZ { get; set; }

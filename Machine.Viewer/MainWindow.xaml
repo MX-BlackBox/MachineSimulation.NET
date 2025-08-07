@@ -171,6 +171,7 @@
                             </Style>
                         </MenuItem.ItemContainerStyle>
                     </MenuItem>
+                    <MenuItem Header="Parallel computing" IsCheckable="True" IsChecked="{Binding MaterialRemoveData.ParallelComputing}" />
                     <Separator/>
                     <MenuItem Header="Export panel" Command="{Binding PanelController.ExportCommand}"/>
                     <Separator/>

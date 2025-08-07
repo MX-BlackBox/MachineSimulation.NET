@@ -12,5 +12,6 @@ namespace MaterialRemove.Interfaces
         SectionsPer100mm SectionsX100mm { get; set; }
         PanelFragment PanelFragment { get; set; }
         SectionDivision SectionDivision{ get; set; }
+        bool ParallelComputing { get; set; }
     }
 }

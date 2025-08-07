@@ -31,6 +31,7 @@ namespace MaterialRemove.Machine.Bridge
         public double FilterMargin { get; set; }
         public PanelFragment PanelFragment { get; set; }
         public int SectionDivision { get; set; }
+        public bool ParallelComputing { get; set; }
 
         public ICollection<IPanelSection> Sections => (_panelSectionsProxy != null) ? _panelSectionsProxy.Sections : null;
         public IEnumerable<ISectionFace> Faces => (_panelSectionsProxy != null) ? Sections.SelectMany(s => s.Faces) : null;

@@ -15,5 +15,6 @@ namespace MaterialRemove.Interfaces
         public double FilterMargin { get; set; }
         PanelFragment PanelFragment { get; set; }
         int SectionDivision { get; set; }
+        bool ParallelComputing { get; set; }
     }
 }

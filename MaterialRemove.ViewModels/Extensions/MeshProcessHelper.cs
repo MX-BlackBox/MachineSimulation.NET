@@ -7,7 +7,7 @@ namespace MaterialRemove.ViewModels.Extensions
 {
     static class MeshProcessHelper
     {
-        internal static DMesh3 GenerateMeshBase(BoundedImplicitFunction3d root, AxisAlignedBox3d filterBox, double cubeSize)
+        internal static DMesh3 GenerateMeshBase(BoundedImplicitFunction3d root, AxisAlignedBox3d filterBox, double cubeSize, bool parallel)
         {
             MarchingCubes c = new MarchingCubes();
             c.Implicit = root;
@@ -15,7 +15,7 @@ namespace MaterialRemove.ViewModels.Extensions
             c.RootModeSteps = 5;                                        // number of iterations
             c.Bounds = filterBox;//_sideFilterBox;
             c.CubeSize = cubeSize; // _cubeSize / 4.0;
-            //c.ParallelCompute = false;
+            c.ParallelCompute = parallel;
             c.Generate();
             MeshNormals.QuickCompute(c.Mesh);                           // generate normals
 

@@ -298,5 +298,17 @@ namespace Machine.Viewer.Properties {
                 this["SectionsX100mm"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ParallelComputing {
+            get {
+                return ((bool)(this["ParallelComputing"]));
+            }
+            set {
+                this["ParallelComputing"] = value;
+            }
+        }
     }
 }
