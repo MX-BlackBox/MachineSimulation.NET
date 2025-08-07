@@ -40,7 +40,8 @@ namespace MaterialRemove.ViewModels
                     foreach (var face in session.Faces) list.Add(GetGeometry(face));
                 }
 
-                StandardMeshWriter.WriteMeshes(fileName, list, WriteOptions.Defaults);
+                //StandardMeshWriter.WriteMeshes(fileName, list, WriteOptions.Defaults);
+                throw new NotImplementedException("ExportCommandImpl not implemented yet");
             }
         }
 

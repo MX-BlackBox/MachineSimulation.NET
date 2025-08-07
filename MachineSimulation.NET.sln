@@ -91,6 +91,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Machine.ViewModels.Interfac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Machine.ViewModels.Base.Implementation", "Machine.ViewModels.Base.Implementation\Machine.ViewModels.Base.Implementation.csproj", "{2684FD88-E89E-48BA-A110-F45CFA807354}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaterialRemove.Geometry", "MaterialRemove.Geometry\MaterialRemove.Geometry.csproj", "{314021A3-9675-41D5-A3C6-5B33571E1DED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -273,6 +275,10 @@ Global
 		{2684FD88-E89E-48BA-A110-F45CFA807354}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2684FD88-E89E-48BA-A110-F45CFA807354}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2684FD88-E89E-48BA-A110-F45CFA807354}.Release|Any CPU.Build.0 = Release|Any CPU
+		{314021A3-9675-41D5-A3C6-5B33571E1DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{314021A3-9675-41D5-A3C6-5B33571E1DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{314021A3-9675-41D5-A3C6-5B33571E1DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{314021A3-9675-41D5-A3C6-5B33571E1DED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

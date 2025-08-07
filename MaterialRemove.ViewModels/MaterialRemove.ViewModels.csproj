@@ -12,13 +12,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="geometry3Sharp" Version="1.0.324" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Machine.ViewModels.Base\Machine.ViewModels.Base.csproj" />
     <ProjectReference Include="..\Machine.ViewModels.Interfaces\Machine.ViewModels.Interfaces.csproj" />
     <ProjectReference Include="..\Machine.ViewModels.Ioc\Machine.ViewModels.Ioc.csproj" />
+    <ProjectReference Include="..\MaterialRemove.Geometry\MaterialRemove.Geometry.csproj" />
     <ProjectReference Include="..\MaterialRemove.Interfaces\MaterialRemove.Interfaces.csproj" />
   </ItemGroup>
 
