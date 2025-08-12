@@ -55,26 +55,12 @@ namespace MaterialRemove.Geometry.Implicit
 		public double Value(ref Vector3d pt)
 		{
             double fA = A.Value(ref pt);
-
-#if DEBUG
-            if (BSet.Count == 0) return fA;
-            var bset = BSet.ToArray();
-            if ((bset.Length == 0) || bset[0] == null) return fA;
-            double fB = bset[0].Value(ref pt);
-            for (int k = 1; k < bset.Length; ++k)
-            {
-                if (bset[k] == null) break;
-                fB = System.Math.Min(fB, bset[k].Value(ref pt));
-            }
-            return System.Math.Max(fA, -fB);
-#else
             if (BSet.Count == 0)
                 return fA;
             double fB = BSet[0].Value(ref pt);
             for (int k = 1; k < BSet.Count; ++k)
                 fB = System.Math.Min(fB, BSet[k].Value(ref pt));
             return System.Math.Max(fA, -fB);
-#endif
         }
 
         public AxisAlignedBox3d Bounds()
