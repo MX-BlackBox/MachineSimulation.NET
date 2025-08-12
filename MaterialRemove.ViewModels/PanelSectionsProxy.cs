@@ -159,15 +159,18 @@ namespace MaterialRemove.ViewModels
                         {
                             lazySection.Add(lps);
                             var subSections = lps.GetSubSections();
-                            var tt = new Task[subSections.Count];
+                            var n = subSections.Count;
+                            var tt = new Task[n];
 
-                            for (int i = 0; i < subSections.Count; i++)
+                            for (int i = 0; i < n; ++i)
                             {
+                                var idx = i;
+
                                 tt[i] = Task.Run(async () =>
                                 {
-                                    if (toolApplication.Intersect(subSections[i]))
+                                    if (toolApplication.Intersect(subSections[idx]))
                                     {
-                                        await ApplyActionToSectionAsync(subSections[i], toolApplication);
+                                        await ApplyActionToSectionAsync(subSections[idx], toolApplication);
                                     }
                                 });
 
@@ -243,6 +246,8 @@ namespace MaterialRemove.ViewModels
 
         private Task ApplyActionToVolumeAsync<T>(IPanelSection section, T toolApplication) where T : Geometry.Implicit.BoundedImplicitFunction3d/*, IIntersector*/, IIndexed
         {
+            if (section.Volume == null) return Task.CompletedTask;
+
             return Task.Run(async () =>
             {
                 if (section.Volume is SectionElementViewModel sevm)
