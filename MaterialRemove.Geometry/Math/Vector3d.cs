@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-#if G3_USING_UNITY
-using UnityEngine;
-#endif
 
 namespace MaterialRemove.Geometry.math
 {
@@ -343,20 +337,6 @@ namespace MaterialRemove.Geometry.math
         {
             return new Vector3f((float)v.x, (float)v.y, (float)v.z);
         }
-
-
-#if G3_USING_UNITY
-        public static implicit operator Vector3d(UnityEngine.Vector3 v)
-        {
-            return new Vector3d(v.x, v.y, v.z);
-        }
-        public static explicit operator Vector3(Vector3d v)
-        {
-            return new Vector3((float)v.x, (float)v.y, (float)v.z);
-        }
-#endif
-
-
 
 
         // complicated functions go down here...

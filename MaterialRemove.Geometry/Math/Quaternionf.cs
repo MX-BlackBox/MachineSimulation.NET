@@ -1,9 +1,5 @@
 ﻿using System;
 
-#if G3_USING_UNITY
-using UnityEngine;
-#endif
-
 
 namespace MaterialRemove.Geometry.math
 {
@@ -413,18 +409,5 @@ namespace MaterialRemove.Geometry.math
         public string ToString(string fmt) {
             return string.Format("{0} {1} {2} {3}", x.ToString(fmt), y.ToString(fmt), z.ToString(fmt), w.ToString(fmt));
         }
-
-
-#if G3_USING_UNITY
-        public static implicit operator Quaternionf(Quaternion q)
-        {
-            return new Quaternionf(q.x, q.y, q.z, q.w);
-        }
-        public static implicit operator Quaternion(Quaternionf q)
-        {
-            return new Quaternion(q.x, q.y, q.z, q.w);
-        }
-#endif
-
     }
 }

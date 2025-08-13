@@ -1,10 +1,5 @@
 ﻿using System;
 
-#if G3_USING_UNITY
-using UnityEngine;
-#endif
-
-
 namespace MaterialRemove.Geometry.math
 {
     // mostly ported from WildMagic5 Wm5Quaternion, from geometrictools.com
@@ -338,18 +333,5 @@ namespace MaterialRemove.Geometry.math
         public string ToString(string fmt) {
             return string.Format("{0} {1} {2} {3}", x.ToString(fmt), y.ToString(fmt), z.ToString(fmt), w.ToString(fmt));
         }
-
-
-#if G3_USING_UNITY
-        public static implicit operator Quaterniond(Quaternion q)
-        {
-            return new Quaterniond(q.x, q.y, q.z, q.w);
-        }
-        public static explicit operator Quaternion(Quaterniond q)
-        {
-            return new Quaternion((float)q.x, (float)q.y, (float)q.z, (float)q.w);
-        }
-#endif
-
     }
 }

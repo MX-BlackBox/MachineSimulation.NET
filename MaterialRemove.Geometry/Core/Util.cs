@@ -186,11 +186,7 @@ namespace MaterialRemove.Geometry.Core
 
         static public string ToSecMilli(TimeSpan t)
         {
-#if G3_USING_UNITY
-            return string.Format("{0}", t.TotalSeconds);
-#else
             return string.Format("{0:F5}", t.TotalSeconds);
-#endif
         }
 
 

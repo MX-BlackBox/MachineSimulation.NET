@@ -1,11 +1,4 @@
 using System;
-using System.Runtime.InteropServices;
-using System.Collections.Generic;
-using System.Text;
-
-#if G3_USING_UNITY
-using UnityEngine;
-#endif
 
 namespace MaterialRemove.Geometry.math
 {
@@ -248,20 +241,6 @@ namespace MaterialRemove.Geometry.math
         public override string ToString() {
             return string.Format("{0:F8} {1:F8}", x, y);
         }
-
-
-
-
-#if G3_USING_UNITY
-        public static implicit operator Vector2f(UnityEngine.Vector2 v)
-        {
-            return new Vector2f(v.x, v.y);
-        }
-        public static implicit operator Vector2(Vector2f v)
-        {
-            return new Vector2(v.x, v.y);
-        }
-#endif
 
     }
 }

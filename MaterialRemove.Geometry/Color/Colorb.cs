@@ -115,20 +115,5 @@ namespace MaterialRemove.Geometry.Color
 		static readonly public Colorf StandardBeige = new Colorf(0.75f, 0.75f, 0.5f);
 		static readonly public Colorf SelectionGold = new Colorf(1.0f, 0.6f, 0.05f);
 		static readonly public Colorf PivotYellow = new Colorf(1.0f, 1.0f, 0.05f);
-
-
-
-
-#if G3_USING_UNITY
-        public static implicit operator Colorb(UnityEngine.Color32 c)
-        {
-            return new Colorb(c.r, c.g, c.b, c.a);
-        }
-        public static implicit operator Color32(Colorb c)
-        {
-            return new Color32(c.r, c.g, c.b, c.a);
-        }
-#endif
-
 	}
 }
