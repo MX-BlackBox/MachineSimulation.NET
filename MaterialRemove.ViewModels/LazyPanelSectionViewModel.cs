@@ -4,7 +4,6 @@ using MaterialRemove.ViewModels.Extensions;
 using MaterialRemove.ViewModels.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 
 namespace MaterialRemove.ViewModels

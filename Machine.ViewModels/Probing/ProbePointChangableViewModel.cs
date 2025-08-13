@@ -1,7 +1,5 @@
 ﻿using Machine.ViewModels.Interfaces.Probing;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Machine.ViewModels.Probing

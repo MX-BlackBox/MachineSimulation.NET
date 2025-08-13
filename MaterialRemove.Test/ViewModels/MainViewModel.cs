@@ -5,8 +5,6 @@ using MaterialRemove.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Point3D = System.Windows.Media.Media3D.Point3D;
 using Vector3D = System.Windows.Media.Media3D.Vector3D;
 using Matrix3D = System.Windows.Media.Media3D.Matrix3D;

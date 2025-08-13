@@ -1,11 +1,6 @@
 ﻿using Machine.Data.Enums;
 using Machine.ViewModels.Interfaces.MachineElements;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace Machine.Views.ViewModels.MachineElementProxies

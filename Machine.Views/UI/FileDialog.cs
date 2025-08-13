@@ -1,9 +1,4 @@
 ﻿using Machine.ViewModels.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MW32 = Microsoft.Win32;
 
 namespace Machine.Views.UI

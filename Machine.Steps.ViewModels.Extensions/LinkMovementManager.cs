@@ -1,5 +1,4 @@
 ﻿using Machine.Steps.ViewModels.Extensions.LinkMovementsItems;
-using Machine.ViewModels.Base;
 using Machine.ViewModels.Interfaces;
 using Machine.ViewModels.Interfaces.Links;
 using Machine.ViewModels.Messages;
@@ -8,7 +7,6 @@ using Machine.ViewModels.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Machine.Steps.ViewModels.Extensions
 {

@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Machine.Data.Base;
-using Machine.Data.Tools;
 using Machine.ViewModels.Interfaces;
 using Machine.ViewModels.Interfaces.MachineElements;
 using Machine.ViewModels.Interfaces.Tools;
-using Machine.ViewModels.MachineElements;
 using MaterialRemove.Interfaces;
 using MDE = Machine.Data.Enums;
 using MVMIoc = Machine.ViewModels.Ioc;

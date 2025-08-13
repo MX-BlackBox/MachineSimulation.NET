@@ -3,11 +3,9 @@ using MaterialRemove.ViewModels.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using MVMIoc = Machine.ViewModels.Ioc;
 using MRVMI = MaterialRemove.ViewModels.Interfaces;
-using System.Collections.ObjectModel;
 using MaterialRemove.ViewModels.Interfaces;
 
 namespace MaterialRemove.ViewModels.Extensions

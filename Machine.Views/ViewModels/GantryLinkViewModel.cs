@@ -3,9 +3,6 @@ using Machine.ViewModels.Messages.Links;
 using Machine.ViewModels.Messages.Links.Gantry;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Machine.Views.ViewModels
 {

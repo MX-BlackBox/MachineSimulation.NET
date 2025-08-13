@@ -4,12 +4,7 @@ using Machine.Data.Interfaces.Tools;
 using Machine.ViewModels.Base;
 using Machine.ViewModels.Interfaces.Tools;
 using Machine.ViewModels.Messages.Tooling;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace Machine.Views.ViewModels.ToolProxies

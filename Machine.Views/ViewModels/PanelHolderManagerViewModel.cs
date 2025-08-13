@@ -1,13 +1,8 @@
 ﻿using Machine.Data.Enums;
 using Machine.ViewModels.Base;
-using Machine.ViewModels.MachineElements;
 using Machine.ViewModels.Messages;
 using Machine.Views.Messages;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Machine.Views.ViewModels

@@ -1,16 +1,10 @@
-﻿using Machine.ViewModels;
-using Machine.ViewModels.Base;
-using Machine.ViewModels.Base.Implementation;
+﻿using Machine.ViewModels.Base.Implementation;
 using Machine.ViewModels.Interfaces.MachineElements;
 using Machine.ViewModels.MachineElements;
 using Machine.Views.Messages;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Machine.Views.ViewModels
 {

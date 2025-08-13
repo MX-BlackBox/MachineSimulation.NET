@@ -1,9 +1,4 @@
 ﻿using HelixToolkit.Wpf.SharpDX;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MRVM = MaterialRemove.ViewModels;
 
 namespace MaterialRemove.ViewModels._3D

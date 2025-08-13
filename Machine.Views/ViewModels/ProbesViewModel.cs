@@ -1,5 +1,4 @@
-﻿using Machine.ViewModels;
-using Machine.ViewModels.Base;
+﻿using Machine.ViewModels.Base;
 using Machine.ViewModels.Base.Implementation;
 using Machine.ViewModels.Interfaces.MachineElements;
 using Machine.ViewModels.Interfaces.Probing;
@@ -9,8 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Machine.Views.ViewModels

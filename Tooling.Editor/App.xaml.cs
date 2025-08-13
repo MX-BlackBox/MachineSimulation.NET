@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
-using Machine.ViewModels;
+﻿using System.Windows;
 using MVMUI = Machine.ViewModels.UI;
 using MDFJ = Machine.DataSource.File.Json;
 using MDFX = Machine.DataSource.File.Xml;
@@ -14,8 +7,6 @@ using MVUI = Machine.Views.UI;
 using MW32 = Microsoft.Win32;
 using MVMI = Machine.ViewModels.Interfaces;
 using MVMM = Machine.ViewModels.Messaging;
-using MVML = Machine.ViewModels.Links;
-using MDIF = Machine.Data.Interfaces.Factories;
 using MVMB = Machine.ViewModels.Base;
 using MVMBI = Machine.ViewModels.Base.Implementation;
 

@@ -1,11 +1,7 @@
-﻿using Machine.ViewModels.Interfaces.MachineElements;
-using Machine.ViewModels.Messages.Tooling;
+﻿using Machine.ViewModels.Messages.Tooling;
 using Machine.ViewModels.UI;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Machine.ViewModels.MachineElements.Toolholder
 {

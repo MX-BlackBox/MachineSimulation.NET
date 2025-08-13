@@ -1,11 +1,7 @@
 ﻿using Machine.ViewModels.Base;
 using Machine.ViewModels.Interfaces.MachineElements;
 using Machine.ViewModels.Messages.Tooling;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Machine.Views.ViewModels
 {

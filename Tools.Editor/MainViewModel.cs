@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using M3DVE = Machine._3D.Views.Enums;
 using VMUI = Machine.ViewModels.UI;
 using M3DVI = Machine._3D.Views.Interfaces;
 using MVMUI = Machine.ViewModels.UI;
 using MVM = Machine.ViewModels;
-using System.Windows.Input;
-using Machine.ViewModels.Messages.Tooling;
 
 namespace Tools.Editor
 {

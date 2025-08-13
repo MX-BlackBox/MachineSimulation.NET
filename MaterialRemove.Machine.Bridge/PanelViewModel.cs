@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using MVMME = Machine.ViewModels.MachineElements;
 using MaterialRemove.Interfaces;
 using System.Threading.Tasks;
@@ -9,7 +7,6 @@ using MaterialRemove.ViewModels.Extensions;
 using System.Linq;
 using MVMI = Machine.ViewModels.Interfaces.Tools;
 using Machine.ViewModels.Interfaces.MachineElements;
-using Machine.Data.Base;
 using Machine.ViewModels.MachineElements;
 using Machine.ViewModels.UI;
 using MVMIoc = Machine.ViewModels.Ioc;

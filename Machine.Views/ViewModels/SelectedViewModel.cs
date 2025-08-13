@@ -1,17 +1,12 @@
-﻿using Machine.ViewModels;
-using Machine.ViewModels.Base;
+﻿using Machine.ViewModels.Base;
 using Machine.ViewModels.Base.Implementation;
-using Machine.ViewModels.Interfaces.Links;
 using Machine.ViewModels.Interfaces.MachineElements;
 using Machine.ViewModels.UI;
-using Machine.Views.Messages;
 using Machine.Views.Messages.Links;
 using Machine.Views.ViewModels.MachineElementProxies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using MVMIF = Machine.ViewModels.Interfaces.Factories;
 
