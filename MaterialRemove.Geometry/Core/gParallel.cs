@@ -24,15 +24,7 @@ namespace MaterialRemove.Geometry.Core
         /// <summary>
         /// Evaluate input actions in parallel
         /// </summary>
-        public static void Evaluate(params Action[] funcs)
-        {
-            int N = funcs.Length;
-            gParallel.ForEach(Interval1i.Range(N), (i) => {
-                funcs[i]();
-            });
-        }
-
-
+        public static void Evaluate(params Action[] funcs) => Parallel.Invoke(funcs);
 
         /// <summary>
         /// Process indices [iStart,iEnd] *inclusive* by passing sub-intervals [start,end] to blockF.

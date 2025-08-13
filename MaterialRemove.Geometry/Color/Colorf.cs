@@ -1,7 +1,5 @@
 ﻿using MaterialRemove.Geometry.math;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MaterialRemove.Geometry.Color
 {

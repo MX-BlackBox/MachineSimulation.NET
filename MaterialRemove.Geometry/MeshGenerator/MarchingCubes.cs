@@ -5,7 +5,6 @@ using MaterialRemove.Geometry.Mesh;
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace MaterialRemove.Geometry.MeshGenerator
 {
@@ -162,7 +161,9 @@ namespace MaterialRemove.Geometry.MeshGenerator
 
             if(parallel)
             {
-                Parallel.For(0, 8, i => cell.f[i] = Implicit.Value(ref cell.p[i]));
+                gParallel.ForEach(Interval1i.Range(0, 8), (i) => {
+                    cell.f[i] = Implicit.Value(ref cell.p[i]);
+                });
             }
             else
             {
@@ -197,7 +198,7 @@ namespace MaterialRemove.Geometry.MeshGenerator
 
             if (parallel)
             {
-                Parallel.Invoke(
+                gParallel.Evaluate(
                     () => cell.f[1] = Implicit.Value(ref cell.p[1]),
                     () => cell.f[2] = Implicit.Value(ref cell.p[2]),
                     () => cell.f[5] = Implicit.Value(ref cell.p[5]),
