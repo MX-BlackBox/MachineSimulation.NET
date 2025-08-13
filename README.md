@@ -87,8 +87,11 @@ Messaging implementation.
 ## Machine.Views
 Data view class library.
 
+## MaterialRemove.Geometry
+Class library that implement the material removal. The code was taken from [geometry3Sharp](https://github.com/gradientspace/geometry3Sharp) to try to improve the calculous speed.
+
 ## MaterialRemove.Interfaces
-Class library thet defines the intarfaces to interact to material removal libraries.
+Class library that defines the intarfaces to interact to material removal libraries.
 
 ## MaterialRemove.Machine.Bridge
 Class library to implement the necessary coupling between material removal ([MaterialRemove.ViewModels](#MaterialRemove.ViewModels)) library and the other viewmodels ([Machine.ViewModels](#Machine.ViewModels)).
